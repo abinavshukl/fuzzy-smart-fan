@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuzzy Smart Fan Controller</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-main">
+        <div class="hero-copy">
+          <p class="eyebrow">Mini Project on Fuzzy System</p>
+          <h1>Fuzzy Logic Smart Fan Controller</h1>
+          <p class="hero-text">
+            This system uses fuzzy logic to convert room temperature and humidity into an intelligent fan speed.
+            It shows membership values, fired rules, and the final defuzzified output.
+          </p>
+        </div>
+
+        <section class="panel controls-panel">
+          <div class="panel-heading">
+            <h2>Inputs</h2>
+            <p>Adjust the sliders and watch the fuzzy system respond instantly.</p>
+          </div>
+
+          <div class="slider-group">
+            <label for="temperatureRange">
+              Temperature
+              <span id="temperatureText">28&deg;C</span>
+            </label>
+            <input id="temperatureRange" type="range" min="0" max="45" step="1" value="28">
+          </div>
+
+          <div class="slider-group">
+            <label for="humidityRange">
+              Humidity
+              <span id="humidityText">55%</span>
+            </label>
+            <input id="humidityRange" type="range" min="0" max="100" step="1" value="55">
+          </div>
+
+          <div class="actions">
+            <button id="exampleButton" type="button">Use Classroom Example</button>
+            <button id="resetButton" type="button" class="ghost">Reset</button>
+          </div>
+
+          <div class="crisp-output">
+            <div>
+              <span class="mini-label">Temperature State</span>
+              <strong id="dominantTemperature">Pleasant</strong>
+            </div>
+            <div>
+              <span class="mini-label">Humidity State</span>
+              <strong id="dominantHumidity">Normal</strong>
+            </div>
+            <div>
+              <span class="mini-label">Fan Recommendation</span>
+              <strong id="fanDecision">Medium</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="hero-card">
+        <p class="hero-label">Current Decision</p>
+
+        <div class="fan-stage">
+          <div class="fan-visual" id="fanVisual" data-speed="low">
+            <div class="fan-halo"></div>
+
+            <div class="fan-air" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="fan-cage">
+              <div class="fan-ring ring-1"></div>
+              <div class="fan-ring ring-2"></div>
+
+              <div class="fan-spokes" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="fan-motion-disc" id="fanMotionDisc" aria-hidden="true"></div>
+
+              <div class="fan-blades" id="fanBlades" aria-hidden="true">
+                <span class="blade blade-a"></span>
+                <span class="blade blade-b"></span>
+                <span class="blade blade-c"></span>
+              </div>
+
+              <div class="fan-hub"></div>
+            </div>
+
+            <div class="fan-neck"></div>
+            <div class="fan-base"></div>
+          </div>
+
+          <div class="fan-power" id="fanPower" aria-hidden="true">
+            <span class="power-bar"></span>
+            <span class="power-bar"></span>
+            <span class="power-bar"></span>
+            <span class="power-bar"></span>
+            <span class="power-bar"></span>
+          </div>
+        </div>
+
+        <div class="speed-ring">
+          <span id="speedValue">0%</span>
+        </div>
+
+        <p id="speedLabel" class="speed-label">Low</p>
+
+        <p class="fan-meta">
+          Visual Fan Speed:
+          <strong id="fanRpm">180 RPM</strong>
+        </p>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel chart-panel">
+        <div class="panel-heading">
+          <h2>Membership Functions</h2>
+          <p>Each graph shows how the current value belongs to different fuzzy sets.</p>
+        </div>
+
+        <div class="chart-grid">
+          <div class="chart-card">
+            <h3>Temperature</h3>
+            <canvas id="temperatureCanvas" width="420" height="220"></canvas>
+            <div id="temperatureMemberships" class="membership-list"></div>
+          </div>
+
+          <div class="chart-card">
+            <h3>Humidity</h3>
+            <canvas id="humidityCanvas" width="420" height="220"></canvas>
+            <div id="humidityMemberships" class="membership-list"></div>
+          </div>
+
+          <div class="chart-card output-card">
+            <h3>Fan Speed Output</h3>
+            <canvas id="speedCanvas" width="420" height="220"></canvas>
+            <div id="speedMemberships" class="membership-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel rules-panel">
+        <div class="panel-heading">
+          <h2>Rule Base</h2>
+          <p>The system uses Mamdani inference with min-max composition and centroid defuzzification.</p>
+        </div>
+
+        <div id="rulesList" class="rules-list"></div>
+      </section>
+
+      <section class="panel explain-panel">
+        <div class="panel-heading">
+          <h2>How It Works</h2>
+          <p>A short explanation you can use directly while using the fuzzy logic smart fan controller.</p>
+        </div>
+
+        <ol class="explain-list">
+          <li>Fuzzification converts crisp inputs into fuzzy membership degrees.</li>
+          <li>Rules compare the input states, such as <em>IF temperature is hot AND humidity is humid THEN fan speed is high</em>.</li>
+          <li>Each rule fires with a strength based on the minimum of its input memberships.</li>
+          <li>The output fuzzy sets are combined and converted into one crisp value using the centroid method.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
