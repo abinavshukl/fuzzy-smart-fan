@@ -623,6 +623,62 @@ canvas {
   line-height: 1.75;
 }
 
+.ranges-guide {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ranges-guide h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.ranges-guide > p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.ranges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.range-card {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.range-card h4 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+}
+
+.range-card ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.range-card li + li {
+  margin-top: 8px;
+}
+
+.range-card code {
+  color: var(--sand);
+  font-size: 0.95em;
+  font-family: inherit;
+  background: rgba(201, 92, 43, 0.08);
+  padding: 1px 5px;
+  border-radius: 999px;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -665,7 +721,8 @@ canvas {
 @media (max-width: 980px) {
   .hero,
   .chart-grid,
-  .rules-list {
+  .rules-list,
+  .ranges-grid {
     grid-template-columns: 1fr;
   }
 

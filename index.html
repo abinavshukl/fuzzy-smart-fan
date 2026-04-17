@@ -174,6 +174,43 @@
           <li>Each rule fires with a strength based on the minimum of its input memberships.</li>
           <li>The output fuzzy sets are combined and converted into one crisp value using the centroid method.</li>
         </ol>
+
+        <div class="ranges-guide">
+          <h3>What These Terms Mean in Values</h3>
+          <p>
+            The system uses overlapping fuzzy ranges, so one input can belong partly to two labels at the same time.
+            These values help users understand what the words on the screen mean while adjusting the sliders.
+          </p>
+
+          <div class="ranges-grid">
+            <article class="range-card">
+              <h4>Temperature</h4>
+              <ul>
+                <li><strong>Cold</strong>: fully cold at <code>12C and below</code>, fades until <code>22C</code></li>
+                <li><strong>Pleasant</strong>: active from <code>18C to 32C</code>, peak at <code>25C</code></li>
+                <li><strong>Hot</strong>: starts from <code>28C</code>, fully hot at <code>38C and above</code></li>
+              </ul>
+            </article>
+
+            <article class="range-card">
+              <h4>Humidity</h4>
+              <ul>
+                <li><strong>Dry</strong>: fully dry at <code>30% and below</code>, fades until <code>50%</code></li>
+                <li><strong>Normal</strong>: active from <code>40% to 70%</code>, peak at <code>55%</code></li>
+                <li><strong>Humid</strong>: starts from <code>60%</code>, fully humid at <code>80% and above</code></li>
+              </ul>
+            </article>
+
+            <article class="range-card">
+              <h4>Fan Speed Percentage</h4>
+              <ul>
+                <li><strong>Low</strong>: fully low at <code>25% and below</code>, fades until <code>45%</code></li>
+                <li><strong>Medium</strong>: active from <code>35% to 75%</code>, peak at <code>55%</code></li>
+                <li><strong>High</strong>: starts from <code>65%</code>, fully high at <code>85% and above</code></li>
+              </ul>
+            </article>
+          </div>
+        </div>
       </section>
     </main>
   </div>
